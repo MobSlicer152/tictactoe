@@ -53,7 +53,8 @@ def print_entry(save: Save, i: int):
     ("Elliot", "Dylan", false) gives "Elliot beat Dylan" or "Dylan lost to Elliot"
     """
 
-    # TODO: dylan
+    # TODO: dylan write this
+    print(save[i])
 
 
 def print_all(save: Save):

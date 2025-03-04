@@ -13,20 +13,20 @@ def main():
     running = True
     winner = board.NONE
     while running:
-        board.print_board(state)
+        # TODO: print board state
 
         for player in [board.X, board.O]:
-            # TODO: get these
-            x = 0  # get_number(0, 2)
-            y = 0  # get_number(0, 2)
-            while not board.set(state, x, y, player):
-                # TODO: get position until it's an allowed one
-                pass
+            # get position until it's an allowed one
+            while True:
+                # TODO: get these
+                x = 0  # get_number(0, 2)
+                y = 0  # get_number(0, 2)
+                if board.set(state, x, y, player) or board.full(state):
+                    break
             if board.check_win(state, player):
                 winner = player
                 break
-
-        board.print_board(state)
+            # TODO: print board state
 
         # keep running until a tie or someone wins
         running = not board.check_tie(state) and winner == board.NONE
