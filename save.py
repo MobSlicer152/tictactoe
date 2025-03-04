@@ -47,6 +47,7 @@ def print_entry(save: Save, i: int):
     """
     prints an entry of the scoreboard:
     ("Elliot", "Dylan", true) gives "Elliot tied Dylan"
+    ("Elliot", "Dylan", false) gives "Elliot beat Dylan" or "Dylan lost to Elliot"
     """
 
     # TODO: dylan
