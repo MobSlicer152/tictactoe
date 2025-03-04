@@ -23,8 +23,8 @@ def load(path: str) -> Save:
         return [
             # make tuple of (winner, loser, is_tie)
             (e[0].strip(), e[1].strip(), bool(e[2]))
-            # split by semicolons, and remove empties
-            for e in [list(filter(None, e.split(SEPARATOR))) for e in entries]
+            # split by semicolons
+            for e in [list(e.split(SEPARATOR)) for e in entries]
         ]
     except:
         raise "Failed to parse save!"
@@ -36,7 +36,10 @@ def add(save: Save, winner: str, loser: str, was_tie: bool):
 
 def write(save: Save, path: str):
     try:
-        serialized = [bytes(f"{e[0]}{SEPARATOR}{e[1]}{SEPARATOR}{e[2]}\n", encoding=ENCODING) for e in save]
+        serialized = [
+            bytes(f"{e[0]}{SEPARATOR}{e[1]}{SEPARATOR}{e[2]}\n", encoding=ENCODING)
+            for e in save
+        ]
         with open(path, "wb") as f:
             f.writelines(serialized)
     except:

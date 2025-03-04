@@ -71,6 +71,17 @@ def check_tie(board: Board) -> bool:
     return full(board) and not check_win(board, X) and not check_win(board, O)
 
 
+def get_letter(value: int) -> str:
+    """gets the letter for a given value"""
+
+    if value == X:
+        return "X"
+    elif value == O:
+        return "O"
+    else:
+        return " "
+
+
 def print_board(board: Board):
     """
     print the board in the form
@@ -83,5 +94,8 @@ def print_board(board: Board):
     |---|---|---|
     """
 
-    # TODO: dylan
-    
+    # TODO: dylan rewrite this your own way
+    print("|---|---|---|")
+    for row in board:
+        print(f"| {get_letter(row[0])} | {get_letter(row[1])} | {get_letter(row[2])} |")
+        print("|---|---|---|")

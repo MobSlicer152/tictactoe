@@ -10,11 +10,10 @@ def main():
     state = []
     board.reset(state)
 
-    # TODO: add in
     running = True
     winner = board.NONE
     while running:
-        # TODO: print board here
+        board.print_board(state)
 
         for player in [board.X, board.O]:
             # TODO: get these
@@ -26,8 +25,8 @@ def main():
             if board.check_win(state, player):
                 winner = player
                 break
-            
-            # TODO: print board here
+
+        board.print_board(state)
 
         # keep running until a tie or someone wins
         running = not board.check_tie(state) and winner == board.NONE
