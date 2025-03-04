@@ -1,0 +1,57 @@
+PATH = "save.txt"
+ENCODING = "utf-8"
+SEPARATOR = ";"
+
+# list[(winner, loser, was_tie)]
+Save = list[tuple[str, str, bool]]
+
+
+def load(path: str) -> Save:
+    """read and parse the save file at the given path"""
+    text = []
+    try:
+        with open(path, "rb") as f:
+            text = [line.decode(encoding=ENCODING) for line in f.readlines()]
+    except:
+        raise f"Failed to read save {path}!"
+
+    try:
+        # get non-empty lines
+        entries = list(filter(None, text))
+
+        # parse entries
+        return [
+            # make tuple of (winner, loser, is_tie)
+            (e[0].strip(), e[1].strip(), bool(e[2]))
+            # split by semicolons, and remove empties
+            for e in [list(filter(None, e.split(SEPARATOR))) for e in entries]
+        ]
+    except:
+        raise "Failed to parse save!"
+
+
+def add(save: Save, winner: str, loser: str, was_tie: bool):
+    save.append((winner, loser, was_tie))
+
+
+def write(save: Save, path: str):
+    try:
+        serialized = [bytes(f"{e[0]}{SEPARATOR}{e[1]}{SEPARATOR}{e[2]}", encoding=ENCODING) for e in save]
+        with open(path, "wb") as f:
+            f.writelines(serialized)
+    except:
+        raise "Failed to write save!"
+
+
+def print_entry(save: Save, i: int):
+    """
+    prints an entry of the scoreboard:
+    ("Elliot", "Dylan", true) gives "Elliot tied Dylan"
+    """
+
+    # TODO: dylan
+
+
+def print_all(save: Save):
+    for i in range(0, len(save)):
+        print_entry(save, i)
