@@ -15,7 +15,7 @@ def main():
             while not board.set(state, x, y, player):
                 # get position until it's an allowed one
                 pass
-            if board.check_win(player):
+            if board.check_win(state, player):
                 winner = player
                 break
 
