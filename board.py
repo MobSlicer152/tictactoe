@@ -62,7 +62,7 @@ def check_win(board: Board, player: int) -> bool:
         return True
 
     # no win
-    return True
+    return False
 
 
 def check_tie(board: Board) -> bool:
