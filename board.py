@@ -71,7 +71,7 @@ def check_tie(board: Board) -> bool:
     return full(board) and not check_win(board, X) and not check_win(board, O)
 
 
-def print(board: Board):
+def print_board(board: Board):
     """
     print the board in the form
     |---|---|---|
@@ -84,3 +84,4 @@ def print(board: Board):
     """
 
     # TODO: dylan
+    

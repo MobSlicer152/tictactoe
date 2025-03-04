@@ -14,6 +14,8 @@ def main():
     running = True
     winner = board.NONE
     while running:
+        # TODO: print board here
+
         for player in [board.X, board.O]:
             # TODO: get these
             x = 0  # get_number(0, 2)
@@ -24,11 +26,13 @@ def main():
             if board.check_win(state, player):
                 winner = player
                 break
+            
+            # TODO: print board here
 
         # keep running until a tie or someone wins
         running = not board.check_tie(state) and winner == board.NONE
 
-    # TODO: say who won
+    # TODO: say who won, and the final state of the board
 
     scoreboard = save.load(save.PATH)
 
