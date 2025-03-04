@@ -36,7 +36,7 @@ def add(save: Save, winner: str, loser: str, was_tie: bool):
 
 def write(save: Save, path: str):
     try:
-        serialized = [bytes(f"{e[0]}{SEPARATOR}{e[1]}{SEPARATOR}{e[2]}", encoding=ENCODING) for e in save]
+        serialized = [bytes(f"{e[0]}{SEPARATOR}{e[1]}{SEPARATOR}{e[2]}\n", encoding=ENCODING) for e in save]
         with open(path, "wb") as f:
             f.writelines(serialized)
     except:

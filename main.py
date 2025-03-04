@@ -29,7 +29,6 @@ def main():
         running = not board.check_tie(state) and winner == board.NONE
 
     # TODO: say who won
-    print()
 
     scoreboard = save.load(save.PATH)
 
