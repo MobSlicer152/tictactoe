@@ -2,6 +2,10 @@ import board
 import save
 
 
+# suggestion: make a function that gets a number and rejects it if there's a ValueError or it's outside the allowed range
+# otherwise, just use int(input())
+
+
 def main():
     state = []
     board.reset(state)
@@ -12,8 +16,8 @@ def main():
     while running:
         for player in [board.X, board.O]:
             # TODO: get these
-            x = 0  # get_number() 0-2
-            y = 0  # get_number() 0-2
+            x = 0  # get_number(0, 2)
+            y = 0  # get_number(0, 2)
             while not board.set(state, x, y, player):
                 # TODO: get position until it's an allowed one
                 pass
