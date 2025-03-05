@@ -21,10 +21,10 @@ def getnum():
     
 
     
-def menu():
+def main():
     while True:
-        print("Welcome to tic tac toe main menu! \nPlease select:")
-        option = input("Type 1 to play the game \nType 2 to view the hall of fame \nType 3 to quit. \n")
+        print("Welcome to tic tac toe main menu!\nPlease select:")
+        option = input("Type 1 to play the game\nType 2 to view the hall of fame\nType 3 to quit.\n")
         try:
             option = int(option)
         except ValueError:
@@ -34,22 +34,22 @@ def menu():
             print("Please enter a valid integer.")
         else:
             if option == 1:
-                main()
+                game()
             elif option == 2:
-                #insert hall of fame viewing function here
-                print("")
+                scoreboard = save.load(save.PATH)
+                save.print_all(scoreboard)
             elif option == 3:
                 print("Thanks for playing!")
                 break
 
 
-def main():
+def game():
     state = []
     board.reset(state)
     
     names = {}
-    names[board.X] = input("What is player X's name?")
-    names[board.O] = input("What is player O's name?")
+    names[board.X] = input("Enter player X's name: ")
+    names[board.O] = input("Enter player O's name: ")
     
     running = True
     winner = board.NONE
@@ -76,8 +76,9 @@ def main():
         # keep running until a tie or someone wins
         running = not board.check_tie(state) and winner == board.NONE
 
-    
-    
+    if board.check_tie(state):
+        winner = board.X
+        loser = board.O
 
     scoreboard = save.load(save.PATH)
 
@@ -85,10 +86,9 @@ def main():
     loser_name = names[loser]
     # TODO: update scoreboard with win/loss/tie
     save.add(scoreboard, winner_name, loser_name, board.check_tie(state))
-    save.print_all(scoreboard)
 
     save.write(scoreboard, save.PATH)
 
 
 if __name__ == "__main__":
-    menu()
+    main()

@@ -54,7 +54,8 @@ def print_entry(save: Save, i: int):
     """
 
     # TODO: dylan write this
-    print(save[i])
+    (winner, loser, was_tie) = save[i]
+    print("")
 
 
 def print_all(save: Save):
