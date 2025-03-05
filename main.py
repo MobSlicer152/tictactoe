@@ -25,12 +25,17 @@ def getnum():
 def main():
     state = []
     board.reset(state)
-
+    x_name = input("What is player X's name?")  # get winner name
+    y_name = input("What is player O's name?")
     running = True
     winner = board.NONE
     while running:
         for player in [board.X, board.O]:
-            print(f"\nPlayer {board.get_letter(player)}'s turn:")
+            if board.get_letter(player) == "X":
+                print(f"\nPlayer {x_name}'s turn:")
+            elif board.get_letter(player) == "O":
+                print(f"\nPlayer {x_name}'s turn:")
+
             board.print_board(state)
             (x, y) = getnum()
             while not board.set(state, x, y, player):
@@ -50,9 +55,9 @@ def main():
 
     scoreboard = save.load(save.PATH)
 
+    winner_name = winner
+    loser_name = 
     # TODO: update scoreboard with win/loss/tie
-    winner_name = input("What is player X's name?")  # get winner name
-    loser_name = input("What is player O's name?")  # get loser name
     save.add(scoreboard, winner_name, loser_name, board.check_tie(state))
     save.print_all(scoreboard)
 
