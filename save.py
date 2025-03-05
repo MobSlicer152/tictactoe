@@ -13,7 +13,7 @@ def load(path: str) -> Save:
         with open(path, "rb") as f:
             text = [line.decode(encoding=ENCODING) for line in f.readlines()]
     except:
-        raise f"Failed to read save {path}!"
+        return []
 
     try:
         # get non-empty lines
