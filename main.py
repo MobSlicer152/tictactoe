@@ -2,8 +2,6 @@ import board
 import save
 
 
-# suggestion: make a function that gets a number and rejects it if there's a ValueError or it's outside the allowed range
-# otherwise, just use int(input())
 def getnum():
     while True:
         xpos = input("Enter the x coordinate (number between 0 and 2) of where you want to go: ")
@@ -34,13 +32,13 @@ def main():
         for player in [board.X, board.O]:
             print(f"\nPlayer {board.get_letter(player)}'s turn:")
             board.print_board(state)
-            # TODO: get these
             (x, y) = getnum()
             while not board.set(state, x, y, player):
                 (x, y) = getnum()
                 pass
             if board.check_win(state, player):
                 winner = player
+                print(f"\nPlayer {board.get_letter(player)} has won the game!:")
                 break
             board.print_board(state)
 
@@ -48,12 +46,13 @@ def main():
         running = not board.check_tie(state) and winner == board.NONE
 
     # TODO: say who won, and the final state of the board
+    
 
     scoreboard = save.load(save.PATH)
 
     # TODO: update scoreboard with win/loss/tie
-    winner_name = ""  # get winner name
-    loser_name = ""  # get loser name
+    winner_name = input("What is player X's name?")  # get winner name
+    loser_name = input("What is player O's name?")  # get loser name
     save.add(scoreboard, winner_name, loser_name, board.check_tie(state))
     save.print_all(scoreboard)
 
