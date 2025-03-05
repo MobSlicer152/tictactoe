@@ -21,6 +21,27 @@ def getnum():
     
 
     
+def menu():
+    while True:
+        print("Welcome to tic tac toe main menu! \nPlease select:")
+        option = input("Type 1 to play the game \nType 2 to view the hall of fame \nType 3 to quit. \n")
+        try:
+            option = int(option)
+        except ValueError:
+            print("Please enter a valid integer.")
+        
+        if option > 3 or option < 1:
+            print("Please enter a valid integer.")
+        else:
+            if option == 1:
+                main()
+            elif option == 2:
+                #insert hall of fame viewing function here
+                print("")
+            elif option == 3:
+                print("Thanks for playing!")
+                break
+
 
 def main():
     state = []
@@ -55,7 +76,7 @@ def main():
         # keep running until a tie or someone wins
         running = not board.check_tie(state) and winner == board.NONE
 
-    # TODO: say who won, and the final state of the board
+    
     
 
     scoreboard = save.load(save.PATH)
@@ -70,4 +91,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    menu()
