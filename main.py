@@ -23,7 +23,7 @@ def getnum():
     
 def main():
     while True:
-        print("Welcome to tic tac toe main menu!\nPlease select:")
+        print("\nWelcome to tic tac toe main menu!\nPlease select:")
         option = input("Type 1 to play the game\nType 2 to view the hall of fame\nType 3 to quit.\n")
         try:
             option = int(option)
@@ -37,6 +37,7 @@ def main():
                 game()
             elif option == 2:
                 scoreboard = save.load(save.PATH)
+                print("Hall of fame:")
                 save.print_all(scoreboard)
             elif option == 3:
                 print("Thanks for playing!")

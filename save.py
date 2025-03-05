@@ -52,10 +52,11 @@ def print_entry(save: Save, i: int):
     ("Elliot", "Dylan", true) gives "Elliot tied Dylan"
     ("Elliot", "Dylan", false) gives "Elliot beat Dylan" or "Dylan lost to Elliot"
     """
-
-    # TODO: dylan write this
     (winner, loser, was_tie) = save[i]
-    print("")
+    if was_tie == True:
+        print(winner.title, "tied against", loser.title)
+    else:
+        print(winner.title, "won against", loser.title)
 
 
 def print_all(save: Save):
