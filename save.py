@@ -22,7 +22,7 @@ def load(path: str) -> Save:
         # parse entries
         return [
             # make tuple of (winner, loser, is_tie)
-            (e[0].strip(), e[1].strip(), bool(e[2]))
+            (e[0].strip(), e[1].strip(), e[2].strip().title() == "True")
             # split by semicolons
             for e in [list(e.split(SEPARATOR)) for e in entries]
         ]
