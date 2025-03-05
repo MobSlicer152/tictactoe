@@ -6,8 +6,8 @@ import save
 # otherwise, just use int(input())
 def getnum():
     while True:
-        xpos = input("Enter the x coordinate (number between 0 and 2) of where you want to go")
-        ypos = input("Enter the y coordinate (number between 0 and 2) of where you want to go")
+        xpos = input("Enter the x coordinate (number between 0 and 2) of where you want to go: ")
+        ypos = input("Enter the y coordinate (number between 0 and 2) of where you want to go: ")
 
         try:
             xpos = int(xpos)
@@ -31,9 +31,9 @@ def main():
     running = True
     winner = board.NONE
     while running:
-        board.print_board(state)
-
         for player in [board.X, board.O]:
+            print(f"\nPlayer {board.get_letter(player)}'s turn:")
+            board.print_board(state)
             # TODO: get these
             (x, y) = getnum()
             while not board.set(state, x, y, player):
