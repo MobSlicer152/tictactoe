@@ -81,20 +81,16 @@ def get_letter(value: int) -> str:
     else:
         return " "
 
-
+#This function prints the board in the form
+#|---|---|---|
+#| x |   | o |
+#|---|---|---|
+#|   | x | o |
+#|---|---|---|
+#| o | o | x |
+#|---|---|---|
 def print_board(board: Board):
-    """
-    print the board in the form
-    |---|---|---|
-    | x |   | o |
-    |---|---|---|
-    |   | x | o |
-    |---|---|---|
-    | o | o | x |
-    |---|---|---|
-    """
 
-    # TODO: dylan rewrite this your own way
     print("|---|---|---|")
     for row in board:
         print(f"| {get_letter(row[0])} | {get_letter(row[1])} | {get_letter(row[2])} |")

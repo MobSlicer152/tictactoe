@@ -2,18 +2,20 @@ import board
 import save
 
 
+#This function will trigger at every turn, and ask the user where the want to go. It will then place their icon in that spot.
 def getnum():
     while True:
         xpos = input("Enter the x coordinate (number between 0 and 2) of where you want to go: ")
         ypos = input("Enter the y coordinate (number between 0 and 2) of where you want to go: ")
 
+        #check if its an int
         try:
             xpos = int(xpos)
             ypos = int(ypos)
-
         except ValueError:
             print("Please input a valid integer")
-    
+
+        #check if its a valid int
         if (xpos > 2) or (xpos < 0) or (ypos < 0) or (ypos > 2):
             print("Please input a valid integer between 0 and 2")
         else:
@@ -21,15 +23,19 @@ def getnum():
     
 
     
+#this is the main menu function. It asks the user whether they want to play a game, see the hall of fame, or quit, then takes them there.
 def main():
     while True:
         print("\nWelcome to tic tac toe main menu!\nPlease select:")
         option = input("Type 1 to play the game\nType 2 to view the hall of fame\nType 3 to quit.\n")
+
+        #check if its an int
         try:
             option = int(option)
         except ValueError:
             print("Please enter a valid integer.")
         
+        #check if its a valid int
         if option > 3 or option < 1:
             print("Please enter a valid integer.")
         else:
@@ -43,11 +49,12 @@ def main():
                 print("Thanks for playing!")
                 break
 
-
+#This is the main game. Triggers if you typed "1" in the main menu
 def game():
     state = []
     board.reset(state)
     
+    #retrieving the players names
     names = {}
     names[board.X] = input("Enter player X's name: ")
     names[board.O] = input("Enter player O's name: ")
@@ -77,6 +84,7 @@ def game():
         # keep running until a tie or someone wins
         running = not board.check_tie(state) and winner == board.NONE
 
+    #sends the game data to the save file / hall of fame
     if board.check_tie(state):
         winner = board.X
         loser = board.O
@@ -85,7 +93,6 @@ def game():
 
     winner_name = names[winner]
     loser_name = names[loser]
-    # TODO: update scoreboard with win/loss/tie
     save.add(scoreboard, winner_name, loser_name, board.check_tie(state))
 
     save.write(scoreboard, save.PATH)
